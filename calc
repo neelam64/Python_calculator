@@ -1,100 +1,86 @@
-#This Program is to build a Basic Calculator
-print ("Calculator")
-print("*"*15)
-n=1
-while (n>0):
-    print("/n Enter 1 for Addition")
-    print("/n Enter 2 for Subtraction")
-    print("/n Enter 3 for Multiplication")
-    print("/n Enter 4 for Division")
-    print("/n Enter 5 for Raising Power")
-    print("/n Enter 6 for Finding Remainder")
-    print("/n Enter 7 for Floor Division")
-    print("/n Enter 8 for Terminating the Process")
-    print("*"*15)
+# This Program is to build an Advanced Calculator
+print("Advanced Calculator")
+print("*" * 15)
 
-    c=int(input("Enter Your Choice . "))
-    print("*"*15)
+def get_number(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
-    if c==1:
-        #This is a program to add two numbers
-        n=int(input("Enter First Number"))
-        m=int(input("Enter Second Number "))
+def add(a, b):
+    return a + b
 
-        o=n+m
+def subtract(a, b):
+    return a - b
 
-        print(n,"+",m,"=",o)
+def multiply(a, b):
+    return a * b
 
-    elif c==2:
-    
-        #This is a program to subtract two numbers
-        n=int(input("Enter First Number"))
-        m=int(input("Enter Second Number "))
-
-        if n>m :
-            o=n-m
-            print(n,"-",m,"=",o)
-
-        else:
-            o=m-n
-            print(m,"-",n,"=",o)
-
-    elif c==3:
-        #This is a program to multiply two numbers
-        n=int(input("Enter First Number"))
-        m=int(input("Enter Second Number "))
-
-        o=n*m
-
-        print(n,"*",m,"=",o)
-
-    elif c==4:
-        #This is a program to divide two numbers
-        n=int(input("Enter First Number"))
-        m=int(input("Enter Second Number "))
-
-        o=n/m
-
-        print(n,"/",m,"=",o)
-
-
-    elif c==5:
-        #This is a program to find exponent
-        n=int(input("Enter the Base Number"))
-        m=int(input("Enter the Power"))
-
-        o=n**m
-
-        print(n,"^",m,"=",o)
-
-    elif c==6:
-        #This is a program to find remainder
-        n=int(input("Enter First Number"))
-        m=int(input("Enter Second Number "))
-
-        o=n%m
-
-        print(n,"%",m,"=",o)
-
-    elif c==7:
-
-        #This is a program to find quotient to whole number (floor division)
-        n=int(input("Enter First Number"))
-        m=int(input("Enter Second Number "))
-
-        o=n//m
-
-        print(n,"//",m,"=",o)
-    
-    
+def divide(a, b):
+    if b != 0:
+        return a / b
     else:
-        n=0
+        return "Error! Division by zero."
 
-print("*"*15)        
-    
+def power(a, b):
+    return a ** b
 
-    
-    
-    
-    
-    
+def remainder(a, b):
+    if b != 0:
+        return a % b
+    else:
+        return "Error! Division by zero."
+
+def floor_divide(a, b):
+    if b != 0:
+        return a // b
+    else:
+        return "Error! Division by zero."
+
+def main():
+    while True:
+        print("\nSelect Operation:")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Raising Power")
+        print("6. Finding Remainder")
+        print("7. Floor Division")
+        print("8. Terminate")
+
+        choice = input("Enter Your Choice (1-8): ")
+        print("*" * 15)
+
+        if choice in ['1', '2', '3', '4', '5', '6', '7']:
+            num1 = get_number("Enter First Number: ")
+            num2 = get_number("Enter Second Number: ")
+
+            if choice == '1':
+                print(f"{num1} + {num2} = {add(num1, num2)}")
+            elif choice == '2':
+                print(f"{num1} - {num2} = {subtract(num1, num2)}")
+            elif choice == '3':
+                print(f"{num1} * {num2} = {multiply(num1, num2)}")
+            elif choice == '4':
+                print(f"{num1} / {num2} = {divide(num1, num2)}")
+            elif choice == '5':
+                print(f"{num1} ^ {num2} = {power(num1, num2)}")
+            elif choice == '6':
+                print(f"{num1} % {num2} = {remainder(num1, num2)}")
+            elif choice == '7':
+                print(f"{num1} // {num2} = {floor_divide(num1, num2)}")
+
+        elif choice == '8':
+            print("Terminating the Process...")
+            break
+        else:
+            print("Invalid Choice! Please select a valid option.")
+
+        print("*" * 15)
+
+if __name__ == "__main__":
+    main()
+
